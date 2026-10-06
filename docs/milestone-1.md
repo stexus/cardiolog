@@ -43,6 +43,7 @@ GRDB is pinned to 7.11.1 in both resolution files. Preview storage uses `Applica
 | Unsigned release IPA | **Passed** archive and package verification, bundle `app.cardiolog`, version 0.1.0, build 1.0.12. `artifacts/release/` |
 | Package rejection tests | **3 passed**: rejects wrong channel, arm64 simulator platform, and missing fixtures. `artifacts/package-rejection-tests.log` |
 | Infrastructure checks | Actionlint 1.7.7 passed with verified newer hosted-runner labels configured; shell syntax, plist validation, shared fixture checks, and checksum verification passed. |
+| FlareStore feed checks | **13 passed**: exact IPA metadata and permissions, dev/release separation and history, numeric ordering, immutable versions, SHA-protected source updates, authentication failure, upload-before-feed ordering, failed-upload handling, stable retries, and stale dev runs. `artifacts/feed-tests.log`. GitHub calls were mocked; no feed was published. |
 | iOS 27 availability | **Unavailable locally**, explicitly reported as unverified. `artifacts/ios-27-availability.log`; separate workflow supplied for a real runtime run. |
 
 Package verification inspects Mach-O platform information, not only arm64 architecture. Each output folder includes the IPA, symbols, checksum file, exact Xcode/SDK/build metadata, and expected entitlement definitions. These local validation artifacts were built before the initial commits: their manifests record `uncommitted` and `sourceDirty: true`. Committing the source does not retroactively change those binaries; subsequent builds record the committed SHA.
@@ -58,7 +59,7 @@ Browser/native portrait comparisons use the same paused 4×4 (13:00 active, 3:00
 
 - User visual review and any requested changes to both representations.
 - Add the remote without changing its intended visibility; run workflows and record actual CI/artifact/release links. Static validation and local archives are not successful CI runs.
-- Adding the app as a FlareStore repository requires a compatible source JSON and accessible feed/IPA URLs. These are not generated yet; the current delivery route is authenticated IPA download followed by manual FlareStore import. See [repository readiness](builds.md#flarestore-repository-readiness).
+- Run the automatic FlareStore feed publication after the remote is configured, then test adding its URL and installing in FlareStore. Feed generation and publication sequencing have local regression coverage; actual remote publication/client authentication remain unverified. See [repository feed](builds.md#flarestore-repository-feed).
 - Run the iOS 27 lane. Runtime compatibility has not been established locally.
 - Confirm proposed bundle IDs and effective entitlements with the user's FlareStore certificate, sign/install both channels, verify standalone launch, updates, and separate data.
 - Implement and physically test H10, Health publishing/import, background/locked-phone recording and cues, headphones/silent/Focus behavior, Apple-generated metrics, Bevel and ring credit in the later milestones.

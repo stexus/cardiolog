@@ -30,7 +30,7 @@ Local source without a commit is labeled `uncommitted`; modified/untracked sourc
 
 Milestone 1 is committed locally; the user will add the remote and push. No remote, CI run, or publication has been performed.
 
-- `ci.yml`: read-only PR checks and reusable validation; browser checks always, native checks only when native/build/shared fixture inputs change. Uses pinned action commits and locked npm/SPM dependencies.
+- `ci.yml`: read-only PR checks and reusable validation; browser and feed/publication checks always, native checks only when native/build/shared fixture inputs change. Uses pinned action commits and locked npm/SPM dependencies.
 - `build-ipa.yml`: relevant `main` pushes produce dev builds after validation; manual dispatch chooses dev/release/both; numeric `vMAJOR.MINOR.PATCH` tags produce releases. Browser-only and documentation-only pushes do not build an IPA. Other manually selected branches produce workflow artifacts only.
 - `ios-27.yml`: explicit separate compatibility lane on `xcode-27`. Requires Xcode 27 and a real installed iOS 27 simulator; absence fails rather than silently skips. The baseline release pipeline is separate during bootstrap; therefore a published baseline build does not establish iOS 27 compatibility.
 
@@ -38,21 +38,35 @@ Native baseline jobs explicitly select `/Applications/Xcode_26.3.app/Contents/De
 
 Action SHAs were resolved from upstream v4 tags at implementation. The baseline Xcode installation and `xcode-27` label were checked against [GitHub's runner inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md) and [Xcode 27 preview announcement](https://github.com/actions/runner-images/issues/14404). Those inventories describe available infrastructure; they are not successful CardioLog workflow runs.
 
-Only the trusted publication job receives `contents: write`. Stable releases refuse to overwrite existing tags/assets. Dev builds are immutable `dev-RUN.ATTEMPT` prereleases; `latest-dev` is a serialized prerelease pointer linking to the current dev download. Source-head and run-order guards prevent an older run moving it backward. Dev releases are excluded from the stable latest-release designation. Workflow artifacts are retained as a download fallback. Manual release builds from `main` remain workflow artifacts unless built from a version tag.
+Only the trusted publication job receives `contents: write`. Stable releases never overwrite existing tags/assets; retries reuse the original published `app-entry.json` after checking its source commit and IPA asset. Dev builds are immutable `dev-RUN.ATTEMPT` prereleases; `latest-dev` is a serialized prerelease pointer linking to the current dev download. Source-head and run-order guards prevent an older run moving it backward. Dev releases are excluded from the stable latest-release designation. Workflow artifacts are retained as a download fallback. Manual release builds from `main` remain workflow artifacts unless built from a version tag.
 
 ## Signing later
 
 An unsigned IPA is not directly installable. After browser review, download it in an authenticated browser if the repository is private, import from Files into FlareStore, and sign with the user's certificate. Keep the bundle IDs stable and preserve HealthKit provisioning. The entitlement sidecar expresses expected capabilities; it does not grant them.
 
-## FlareStore repository readiness
+## FlareStore repository feed
 
-The source is ready to push and the workflows are configured to build unsigned IPAs, but a GitHub project URL is not itself a FlareStore source. FlareStore documents repository feeds in AltStore, SideStore, or ESign formats. Those feeds describe app metadata, versions, icons, and downloadable IPA URLs. No such feed is generated or hosted by this project yet. [FlareStore import and repository instructions](https://flarestore.app/guide/ios/), [repository JSON format overview](https://flarestore.app/repo-creator/).
+After pushing `main`, wait for **Build unsigned IPA** to finish its publication job. It uploads the immutable dev IPA and then creates/updates `source.json` on the dedicated `sideload` branch. Add this URL in **FlareStore → Add Repository**, substituting the GitHub owner and repository name:
 
-After pushing `main`, wait for **Build unsigned IPA** to pass. The `latest-dev` prerelease links to the immutable dev release containing the IPA. On the iPhone, download that IPA through the authenticated GitHub browser session, then use **FlareStore → Import → Library → Sign → Install**. A numeric version tag such as `v0.1.0` triggers the separate release-channel build. Do not publish a version tag until ready to designate that version; the current app is a Milestone 1 sample shell.
+```text
+https://raw.githubusercontent.com/OWNER/REPO/sideload/source.json
+```
 
-To make CardioLog browsable and updatable through **Add Repository**, add a generated source JSON with separate dev/release entries, update it only after successful IPA publication, and give it a stable URL whose feed, icons, and IPA assets FlareStore can retrieve. For a private repository, an accessible hosting/authentication arrangement is still needed; the user's browser GitHub session cannot be assumed to authenticate FlareStore. Do not change repository visibility or embed credentials in a feed to bypass that requirement. This convenience remains deferred as described in `implementation_plan.md` §7.5.
+The actual URL is printed in the Actions job summary and release notes. No GitHub Pages configuration or separate server is needed. The feed initially lists **CardioLog Dev**. Publishing a numeric version tag such as `v0.1.0` adds the independent **CardioLog** release entry. Manual release builds from `main` remain downloadable workflow artifacts; they do not create a stable source entry. The current app is still a Milestone 1 sample shell.
 
-CI publication and FlareStore installation still require an actual remote workflow run and a signed physical-device test; local archive verification does not establish either.
+`scripts/sideload_feed.py` generates the AltStore-compatible app entry from the verified IPA, build manifest, and expected entitlements. It includes exact bundle ID, semantic/build versions, minimum iOS, archive size, permissions, a commit-pinned icon URL, and an immutable IPA URL. The `versions` array and legacy top-level version fields support different source readers. Each immutable release includes `app-entry.json`, preserving its feed metadata for retries. Existing version history and the other channel remain intact; numeric version/build ordering prevents an older tag finishing late from rolling the feed backward. [FlareStore source support](https://flarestore.app/guide/ios/), [AltStore source fields](https://faq.altstore.io/developers/make-a-source), [version ordering](https://faq.altstore.io/developers/updating-apps).
+
+The serialized publication job updates the feed only after all release assets upload successfully and the referenced IPA's name/size are confirmed. The GitHub Contents API commits the entire JSON atomically and checks the previous file SHA to avoid overwriting a concurrent change. The `sideload` branch is created from the first published source commit and thereafter receives only feed updates; `main` is not modified. Reserve that branch/file for generated output and allow the workflow token to create/update it if branch rules are configured. A failed feed update can be retried using the existing immutable release metadata without replacing the IPA.
+
+Repository visibility is unchanged. For a private repository, FlareStore must authenticate access to the feed, icons, and IPA assets; support for that has not been established. No credentials are embedded in the feed. The fallback is authenticated GitHub download, then **FlareStore → Import → Library → Sign → Install**. CI publication and FlareStore installation still require an actual remote workflow run and a signed physical-device test.
+
+Run the local feed/publication checks with:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_sideload_feed.py' -v
+```
+
+The tests use synthetic IPA metadata and mocked GitHub responses; they do not publish anything.
 
 ## Physical-device acceptance
 

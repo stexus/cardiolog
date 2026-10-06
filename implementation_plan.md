@@ -203,7 +203,7 @@ Actions artifacts provide a fallback, but GitHub Release assets should provide c
 
 Keep repository visibility unchanged when implementing. Private release assets require GitHub authentication; the supported initial flow is download through the authenticated browser, then import from Files into FlareStore. Do not assume FlareStore can fetch private GitHub URLs with the user's browser session.
 
-FlareStore also documents compatible repository feeds. A feed with dev/release entries can be a later convenience after basic downloads work, particularly if a suitable authenticated or intentionally public asset endpoint exists. It is not needed for the first build and must not embed a GitHub token in a public feed. [FlareStore repository support](https://flarestore.app/guide/ios/).
+Generate an AltStore-compatible FlareStore source automatically after successful IPA publication. Host `source.json` on the `sideload` branch at `https://raw.githubusercontent.com/OWNER/REPO/sideload/source.json`; no Pages deployment is required. Dev and release have separate app entries, populated only after their actual artifacts exist, with exact versions/builds, minimum OS, sizes, permissions, and immutable download links. Preserve version history and the other channel when updating. Store each release's app-entry metadata with its immutable assets so a failed feed update can be retried without replacing an IPA. Serialize feed writes and use the GitHub file SHA to protect concurrent updates. Keep repository visibility unchanged and never embed a GitHub token in the feed; private repositories still require client-compatible authentication or manual import. [FlareStore repository support](https://flarestore.app/guide/ios/).
 
 ### 7.6 Signing and install checklist
 

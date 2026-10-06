@@ -17,6 +17,14 @@ on:
 permissions:
   contents: read
 jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Verify source generation and publication ordering
+        run: python3 -m unittest discover -s scripts -p 'test_sideload_feed.py' -v
   changes:
     runs-on: ubuntu-latest
     outputs:

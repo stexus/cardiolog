@@ -31,6 +31,6 @@ Unsigned IPAs, checksums, manifests, expected entitlements, symbols, logs, and s
 
 Milestone 1 is committed locally on `main`; the user will add the remote. No CI run or GitHub release has happened. Once connected, PRs validate, relevant main changes build dev, manual dispatch accepts dev/release/both, and `vMAJOR.MINOR.PATCH` tags publish immutable release assets. Browser-only changes do not trigger an IPA build. The separate iOS 27 workflow fails if its toolchain/runtime is unavailable; a skipped or missing run is not compatibility evidence.
 
-FlareStore currently uses manual IPA import after download. A compatible repository JSON feed and its hosting are still needed for **Add Repository**; pushing the GitHub project alone does not provide one. See [FlareStore repository readiness](docs/builds.md#flarestore-repository-readiness).
+After the first successful build and publication, add `https://raw.githubusercontent.com/OWNER/REPO/sideload/source.json` in FlareStore. The workflow creates this feed automatically and updates separate dev/release entries as their IPAs are published. No GitHub Pages setup is needed. Private repositories still require client-compatible authentication or manual IPA import. See [FlareStore repository feed](docs/builds.md#flarestore-repository-feed).
 
 See [build procedures](docs/builds.md), [product design](design.md), and [implementation plan](implementation_plan.md). FlareStore signing, physical installation, H10, Health permissions/publication, background cues, and ring credit remain unverified.
