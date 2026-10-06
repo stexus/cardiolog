@@ -1,0 +1,50 @@
+{
+  "name": "CardioLog",
+  "identifier": "app.cardiolog.source.stexus.cardiolog",
+  "subtitle": "Dev and release builds for FlareStore",
+  "description": "Unsigned CardioLog builds. Import this source, then sign the chosen app with your certificate. Milestone 1 contains sample workouts only.",
+  "website": "https://github.com/stexus/cardiolog",
+  "sourceURL": "https://raw.githubusercontent.com/stexus/cardiolog/sideload/source.json",
+  "iconURL": "https://raw.githubusercontent.com/stexus/cardiolog/90cb95b2c6ccdb742c813b2a7dd9705d929aa91c/App/Assets.xcassets/AppIconDev.appiconset/Icon.png",
+  "tintColor": "#1761D8",
+  "apps": [
+    {
+      "name": "CardioLog Dev",
+      "bundleIdentifier": "app.cardiolog.dev",
+      "developerName": "stexus",
+      "subtitle": "Interval timer and cardio log \u00b7 sample preview",
+      "localizedDescription": "Native iPhone interval timer with saved templates, workout controls, and sample history. Milestone 1 preview: real sensor recording and Apple Health integration are not implemented yet. Requires your signing certificate in FlareStore.",
+      "iconURL": "https://raw.githubusercontent.com/stexus/cardiolog/90cb95b2c6ccdb742c813b2a7dd9705d929aa91c/App/Assets.xcassets/AppIconDev.appiconset/Icon.png",
+      "tintColor": "#1761D8",
+      "category": "lifestyle",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "1.1.1",
+          "date": "2026-10-06T06:35:04.891485+00:00",
+          "minOSVersion": "26.0",
+          "downloadURL": "https://github.com/stexus/cardiolog/releases/download/dev-1.1/CardioLog-Dev-0.1.0-1.1.1-90cb95b-unsigned.ipa",
+          "size": 1392523,
+          "localizedDescription": "Milestone 1 sample shell. Unsigned dev build 1.1.1; sign in FlareStore before installing."
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [
+          "com.apple.developer.healthkit"
+        ],
+        "privacy": {
+          "NSBluetoothAlwaysUsageDescription": "CardioLog connects to your selected heart rate sensor to record workouts locally.",
+          "NSHealthShareUsageDescription": "CardioLog can import heart rate from a workout you choose in Apple Health.",
+          "NSHealthUpdateUsageDescription": "With your permission, CardioLog can publish real workouts and heart rate to Apple Health."
+        }
+      },
+      "version": "0.1.0",
+      "buildVersion": "1.1.1",
+      "downloadURL": "https://github.com/stexus/cardiolog/releases/download/dev-1.1/CardioLog-Dev-0.1.0-1.1.1-90cb95b-unsigned.ipa",
+      "size": 1392523,
+      "versionDate": "2026-10-06T06:35:04.891485+00:00",
+      "versionDescription": "Milestone 1 sample shell. Unsigned dev build 1.1.1; sign in FlareStore before installing."
+    }
+  ],
+  "news": []
+}
