@@ -1,0 +1,14 @@
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+artifacts/
+node_modules/
+mockup/test-results/
+mockup/playwright-report/
+*.xcuserstate
+xcuserdata/
+.tools/
+*.log
+__pycache__/
+mockup/review/
