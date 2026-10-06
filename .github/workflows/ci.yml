@@ -1,0 +1,88 @@
+name: Validate
+on:
+  pull_request:
+    paths:
+      - 'App/**'
+      - 'AppUITests/**'
+      - 'Sources/**'
+      - 'Tests/**'
+      - 'Fixtures/**'
+      - 'Config/**'
+      - 'CardioLog.xcodeproj/**'
+      - 'Package.*'
+      - 'mockup/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      native: ${{ steps.paths.outputs.native }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: paths
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENT_NAME" != pull_request ]; then
+            echo 'native=true' >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep -Eq '^(App/|AppUITests/|Sources/|Tests/|Fixtures/|Config/|CardioLog.xcodeproj/|Package\.|scripts/(build-ipa|verify-ipa|validate-native|select-simulator|prepare-fixtures|generate-project|generate-icons|write-build-info|test-ipa-verifier|publish-release)|.github/)'; then
+            echo 'native=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'native=false' >> "$GITHUB_OUTPUT"
+          fi
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: mockup/package-lock.json
+      - run: python3 scripts/prepare-fixtures.py --check
+      - run: npm ci --prefix mockup
+      - run: npx --prefix mockup playwright install --with-deps chromium
+      - run: mkdir -p artifacts && npm test --prefix mockup
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: browser-review
+          path: |
+            artifacts/browser-*.png
+            mockup/test-results/
+  native:
+    needs: changes
+    if: needs.changes.outputs.native == 'true'
+    runs-on: macos-26
+    timeout-minutes: 40
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Require pinned Xcode
+        run: test -d "$DEVELOPER_DIR" || { echo 'Pinned Xcode 26.3 is missing'; exit 1; }
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .build/repositories
+            .build/xcode-packages/repositories
+          key: swift-${{ runner.os }}-${{ runner.arch }}-xcode26.3-${{ hashFiles('Package.resolved') }}
+      - run: scripts/validate-native.sh 26
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: iOS-26-validation
+          path: artifacts/*.xcresult

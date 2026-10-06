@@ -1,0 +1,6 @@
+# Hosted labels verified against GitHub's inventory on 2026-10-05.
+# Listed here for older actionlint versions whose built-in inventory predates them.
+self-hosted-runner:
+  labels:
+    - macos-26
+    - xcode-27

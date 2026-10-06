@@ -1,0 +1,100 @@
+name: Build unsigned IPA
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+    paths: ['App/**', 'AppUITests/**', 'Sources/**', 'Tests/**', 'Fixtures/**', 'Config/**', 'CardioLog.xcodeproj/**', 'Package.*', 'scripts/**', '!scripts/serve-preview.sh', '!scripts/prepare-review.py', '.github/workflows/**']
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: Channel to build
+        type: choice
+        options: [dev, release, both]
+        default: dev
+permissions:
+  contents: read
+concurrency:
+  group: ipa-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref == 'refs/heads/main' }}
+jobs:
+  validation:
+    uses: ./.github/workflows/ci.yml
+  selection:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - id: select
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          CHANNEL: ${{ inputs.channel || 'dev' }}
+        run: |
+          if [ "$REF_TYPE" = tag ]; then
+            echo 'matrix=["release"]' >> "$GITHUB_OUTPUT"
+          elif [ "$CHANNEL" = both ]; then
+            echo 'matrix=["dev","release"]' >> "$GITHUB_OUTPUT"
+          else
+            echo "matrix=[\"$CHANNEL\"]" >> "$GITHUB_OUTPUT"
+          fi
+  build:
+    needs: [validation, selection]
+    runs-on: macos-26
+    timeout-minutes: 35
+    strategy:
+      matrix:
+        channel: ${{ fromJSON(needs.selection.outputs.matrix) }}
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - run: test -d "$DEVELOPER_DIR" || { echo 'Pinned Xcode 26.3 is missing'; exit 1; }
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .build/repositories
+            .build/xcode-packages/repositories
+          key: swift-${{ runner.os }}-${{ runner.arch }}-xcode26.3-${{ hashFiles('Package.resolved') }}
+      - name: Version from stable tag
+        if: github.ref_type == 'tag'
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo 'Tag must be vMAJOR.MINOR.PATCH'; exit 1; }
+          echo "CARDIOLOG_VERSION=${TAG#v}" >> "$GITHUB_ENV"
+      - run: scripts/build-ipa.sh "${{ matrix.channel }}"
+      - name: Exercise package rejection cases
+        if: matrix.channel == 'dev'
+        run: python3 scripts/test-ipa-verifier.py artifacts/dev/*-unsigned.ipa
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: unsigned-${{ matrix.channel }}-${{ github.run_number }}-${{ github.run_attempt }}
+          path: artifacts/${{ matrix.channel }}/
+          if-no-files-found: error
+          retention-days: 30
+  publish:
+    needs: [build, selection]
+    # Manual builds on other branches stay as workflow artifacts. Stable assets need a version tag.
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: cardiolog-release-publication
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          pattern: unsigned-*
+          path: downloads
+      - name: Publish checked assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          CHANNELS: ${{ needs.selection.outputs.matrix }}
+        run: python3 scripts/publish-release.py
