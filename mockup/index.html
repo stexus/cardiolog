@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>CardioLog · Design preview</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="review-tools" aria-label="Preview controls">
+      <a class="brand" href="./"
+        ><span class="brand-mark">♥</span> CardioLog
+        <span class="eyebrow">DESIGN PREVIEW</span></a
+      >
+      <div class="toolbar">
+        <label
+          >Sample state
+          <select id="preview-state"></select></label
+        ><label
+          >Appearance
+          <select id="appearance">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select></label
+        ><label
+          >Orientation
+          <select id="orientation">
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select></label
+        >
+      </div>
+      <p>
+        Interactive design companion · Milestone 1<br />Bluetooth, Health, cues,
+        and sharing are simulated.
+      </p>
+    </aside>
+    <div class="stage">
+      <div id="phone" class="phone">
+        <div class="statusbar" aria-hidden="true">
+          <b>9:41</b><span class="island"></span><span>▥ ▰</span>
+        </div>
+        <div class="sample-banner">
+          SAMPLE DATA <span>· Local preview only</span>
+        </div>
+        <main id="screen"></main>
+        <div id="start-dock" class="start-dock" hidden></div>
+        <nav id="tabs" aria-label="Main navigation"></nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+    <dialog id="sheet"></dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

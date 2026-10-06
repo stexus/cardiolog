@@ -1,0 +1,2699 @@
+{
+  "schemaVersion": 1,
+  "templates": [
+    {
+      "id": "norwegian",
+      "name": "Norwegian 4\u00d74",
+      "activity": "treadmill",
+      "equipmentID": "treadmill",
+      "warmupSeconds": 300,
+      "workSeconds": 240,
+      "recoverySeconds": 180,
+      "repetitions": 4,
+      "finalRecovery": false,
+      "cooldownSeconds": 300,
+      "workSettings": {
+        "speed": 6.5,
+        "incline": 2,
+        "resistance": null,
+        "cadence": null
+      },
+      "recoverySettings": {
+        "speed": 3.2,
+        "incline": 1,
+        "resistance": null,
+        "cadence": null
+      }
+    },
+    {
+      "id": "steady",
+      "name": "Steady ride",
+      "activity": "bike",
+      "equipmentID": "bike",
+      "warmupSeconds": 180,
+      "workSeconds": 1200,
+      "recoverySeconds": 0,
+      "repetitions": 1,
+      "finalRecovery": false,
+      "cooldownSeconds": 180,
+      "workSettings": {
+        "speed": null,
+        "incline": null,
+        "resistance": 6,
+        "cadence": 85
+      },
+      "recoverySettings": {
+        "speed": null,
+        "incline": null,
+        "resistance": 3,
+        "cadence": 65
+      }
+    }
+  ],
+  "equipment": [
+    {
+      "id": "treadmill",
+      "gym": "Neighborhood gym",
+      "name": "Treadmill",
+      "activity": "treadmill",
+      "speedUnit": "mph"
+    },
+    {
+      "id": "bike",
+      "gym": "Neighborhood gym",
+      "name": "Indoor bike",
+      "activity": "bike",
+      "speedUnit": null
+    },
+    {
+      "id": "home-bike",
+      "gym": "Home",
+      "name": "Spin bike",
+      "activity": "bike",
+      "speedUnit": null
+    }
+  ],
+  "workouts": [
+    {
+      "id": "four-by-four",
+      "name": "Norwegian 4\u00d74",
+      "templateID": "norwegian",
+      "startedAt": "2026-10-04T17:30:00Z",
+      "status": "completed",
+      "isSimulation": true,
+      "equipment": {
+        "id": "treadmill",
+        "gym": "Neighborhood gym",
+        "name": "Treadmill",
+        "activity": "treadmill",
+        "speedUnit": "mph"
+      },
+      "activeSeconds": 2100,
+      "intervals": [
+        {
+          "id": "norwegian-0",
+          "role": "warmup",
+          "repetition": null,
+          "plannedSeconds": 300,
+          "actualSeconds": 300,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-1",
+          "role": "work",
+          "repetition": 1,
+          "plannedSeconds": 240,
+          "actualSeconds": 240,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-2",
+          "role": "recovery",
+          "repetition": 1,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-3",
+          "role": "work",
+          "repetition": 2,
+          "plannedSeconds": 240,
+          "actualSeconds": 240,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-4",
+          "role": "recovery",
+          "repetition": 2,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-5",
+          "role": "work",
+          "repetition": 3,
+          "plannedSeconds": 240,
+          "actualSeconds": 240,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-6",
+          "role": "recovery",
+          "repetition": 3,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-7",
+          "role": "work",
+          "repetition": 4,
+          "plannedSeconds": 240,
+          "actualSeconds": 240,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-8",
+          "role": "cooldown",
+          "repetition": null,
+          "plannedSeconds": 300,
+          "actualSeconds": 300,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 0,
+          "bpm": 107,
+          "segment": 0
+        },
+        {
+          "elapsed": 10,
+          "bpm": 109,
+          "segment": 0
+        },
+        {
+          "elapsed": 20,
+          "bpm": 110,
+          "segment": 0
+        },
+        {
+          "elapsed": 30,
+          "bpm": 112,
+          "segment": 0
+        },
+        {
+          "elapsed": 40,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 50,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 60,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 70,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 80,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 90,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 100,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 110,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 120,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 130,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 140,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 150,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 160,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 170,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 180,
+          "bpm": 116,
+          "segment": 0
+        },
+        {
+          "elapsed": 190,
+          "bpm": 117,
+          "segment": 0
+        },
+        {
+          "elapsed": 200,
+          "bpm": 117,
+          "segment": 0
+        },
+        {
+          "elapsed": 210,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 220,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 230,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 240,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 250,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 260,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 270,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 280,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 290,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 300,
+          "bpm": 124,
+          "segment": 0
+        },
+        {
+          "elapsed": 310,
+          "bpm": 129,
+          "segment": 0
+        },
+        {
+          "elapsed": 320,
+          "bpm": 133,
+          "segment": 0
+        },
+        {
+          "elapsed": 330,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 340,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 350,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 360,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 370,
+          "bpm": 151,
+          "segment": 0
+        },
+        {
+          "elapsed": 380,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 390,
+          "bpm": 156,
+          "segment": 0
+        },
+        {
+          "elapsed": 400,
+          "bpm": 159,
+          "segment": 0
+        },
+        {
+          "elapsed": 410,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 420,
+          "bpm": 163,
+          "segment": 0
+        },
+        {
+          "elapsed": 430,
+          "bpm": 164,
+          "segment": 0
+        },
+        {
+          "elapsed": 440,
+          "bpm": 165,
+          "segment": 0
+        },
+        {
+          "elapsed": 450,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 460,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 470,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 480,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 490,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 500,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 510,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 520,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 530,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 540,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 550,
+          "bpm": 157,
+          "segment": 0
+        },
+        {
+          "elapsed": 560,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 570,
+          "bpm": 151,
+          "segment": 0
+        },
+        {
+          "elapsed": 580,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 590,
+          "bpm": 146,
+          "segment": 0
+        },
+        {
+          "elapsed": 600,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 610,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 620,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 630,
+          "bpm": 140,
+          "segment": 0
+        },
+        {
+          "elapsed": 640,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 650,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 660,
+          "bpm": 135,
+          "segment": 0
+        },
+        {
+          "elapsed": 670,
+          "bpm": 134,
+          "segment": 0
+        },
+        {
+          "elapsed": 680,
+          "bpm": 132,
+          "segment": 0
+        },
+        {
+          "elapsed": 690,
+          "bpm": 131,
+          "segment": 0
+        },
+        {
+          "elapsed": 700,
+          "bpm": 130,
+          "segment": 0
+        },
+        {
+          "elapsed": 710,
+          "bpm": 129,
+          "segment": 0
+        },
+        {
+          "elapsed": 720,
+          "bpm": 133,
+          "segment": 0
+        },
+        {
+          "elapsed": 730,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 740,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 750,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 760,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 770,
+          "bpm": 152,
+          "segment": 0
+        },
+        {
+          "elapsed": 780,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 790,
+          "bpm": 157,
+          "segment": 0
+        },
+        {
+          "elapsed": 800,
+          "bpm": 159,
+          "segment": 0
+        },
+        {
+          "elapsed": 810,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 820,
+          "bpm": 163,
+          "segment": 0
+        },
+        {
+          "elapsed": 830,
+          "bpm": 164,
+          "segment": 0
+        },
+        {
+          "elapsed": 840,
+          "bpm": 165,
+          "segment": 0
+        },
+        {
+          "elapsed": 850,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 860,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 870,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 880,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 890,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 900,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 910,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 920,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 930,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 940,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 950,
+          "bpm": 168,
+          "segment": 0
+        },
+        {
+          "elapsed": 960,
+          "bpm": 163,
+          "segment": 0
+        },
+        {
+          "elapsed": 970,
+          "bpm": 159,
+          "segment": 0
+        },
+        {
+          "elapsed": 980,
+          "bpm": 156,
+          "segment": 0
+        },
+        {
+          "elapsed": 990,
+          "bpm": 153,
+          "segment": 0
+        },
+        {
+          "elapsed": 1000,
+          "bpm": 150,
+          "segment": 0
+        },
+        {
+          "elapsed": 1010,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 1110,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1120,
+          "bpm": 129,
+          "segment": 1
+        },
+        {
+          "elapsed": 1130,
+          "bpm": 128,
+          "segment": 1
+        },
+        {
+          "elapsed": 1140,
+          "bpm": 134,
+          "segment": 1
+        },
+        {
+          "elapsed": 1150,
+          "bpm": 138,
+          "segment": 1
+        },
+        {
+          "elapsed": 1160,
+          "bpm": 143,
+          "segment": 1
+        },
+        {
+          "elapsed": 1170,
+          "bpm": 147,
+          "segment": 1
+        },
+        {
+          "elapsed": 1180,
+          "bpm": 150,
+          "segment": 1
+        },
+        {
+          "elapsed": 1190,
+          "bpm": 153,
+          "segment": 1
+        },
+        {
+          "elapsed": 1200,
+          "bpm": 156,
+          "segment": 1
+        },
+        {
+          "elapsed": 1210,
+          "bpm": 158,
+          "segment": 1
+        },
+        {
+          "elapsed": 1220,
+          "bpm": 160,
+          "segment": 1
+        },
+        {
+          "elapsed": 1230,
+          "bpm": 162,
+          "segment": 1
+        },
+        {
+          "elapsed": 1240,
+          "bpm": 163,
+          "segment": 1
+        },
+        {
+          "elapsed": 1250,
+          "bpm": 163,
+          "segment": 1
+        },
+        {
+          "elapsed": 1260,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1270,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1280,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1290,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1300,
+          "bpm": 165,
+          "segment": 1
+        },
+        {
+          "elapsed": 1310,
+          "bpm": 165,
+          "segment": 1
+        },
+        {
+          "elapsed": 1320,
+          "bpm": 165,
+          "segment": 1
+        },
+        {
+          "elapsed": 1330,
+          "bpm": 166,
+          "segment": 1
+        },
+        {
+          "elapsed": 1340,
+          "bpm": 167,
+          "segment": 1
+        },
+        {
+          "elapsed": 1350,
+          "bpm": 168,
+          "segment": 1
+        },
+        {
+          "elapsed": 1360,
+          "bpm": 169,
+          "segment": 1
+        },
+        {
+          "elapsed": 1370,
+          "bpm": 170,
+          "segment": 1
+        },
+        {
+          "elapsed": 1380,
+          "bpm": 165,
+          "segment": 1
+        },
+        {
+          "elapsed": 1390,
+          "bpm": 161,
+          "segment": 1
+        },
+        {
+          "elapsed": 1400,
+          "bpm": 157,
+          "segment": 1
+        },
+        {
+          "elapsed": 1410,
+          "bpm": 154,
+          "segment": 1
+        },
+        {
+          "elapsed": 1420,
+          "bpm": 151,
+          "segment": 1
+        },
+        {
+          "elapsed": 1430,
+          "bpm": 148,
+          "segment": 1
+        },
+        {
+          "elapsed": 1440,
+          "bpm": 145,
+          "segment": 1
+        },
+        {
+          "elapsed": 1450,
+          "bpm": 142,
+          "segment": 1
+        },
+        {
+          "elapsed": 1460,
+          "bpm": 140,
+          "segment": 1
+        },
+        {
+          "elapsed": 1470,
+          "bpm": 137,
+          "segment": 1
+        },
+        {
+          "elapsed": 1480,
+          "bpm": 135,
+          "segment": 1
+        },
+        {
+          "elapsed": 1490,
+          "bpm": 134,
+          "segment": 1
+        },
+        {
+          "elapsed": 1500,
+          "bpm": 132,
+          "segment": 1
+        },
+        {
+          "elapsed": 1510,
+          "bpm": 131,
+          "segment": 1
+        },
+        {
+          "elapsed": 1520,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1530,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1540,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1550,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1560,
+          "bpm": 135,
+          "segment": 1
+        },
+        {
+          "elapsed": 1570,
+          "bpm": 140,
+          "segment": 1
+        },
+        {
+          "elapsed": 1580,
+          "bpm": 145,
+          "segment": 1
+        },
+        {
+          "elapsed": 1590,
+          "bpm": 148,
+          "segment": 1
+        },
+        {
+          "elapsed": 1600,
+          "bpm": 151,
+          "segment": 1
+        },
+        {
+          "elapsed": 1610,
+          "bpm": 154,
+          "segment": 1
+        },
+        {
+          "elapsed": 1620,
+          "bpm": 156,
+          "segment": 1
+        },
+        {
+          "elapsed": 1630,
+          "bpm": 158,
+          "segment": 1
+        },
+        {
+          "elapsed": 1640,
+          "bpm": 159,
+          "segment": 1
+        },
+        {
+          "elapsed": 1650,
+          "bpm": 160,
+          "segment": 1
+        },
+        {
+          "elapsed": 1660,
+          "bpm": 161,
+          "segment": 1
+        },
+        {
+          "elapsed": 1670,
+          "bpm": 161,
+          "segment": 1
+        },
+        {
+          "elapsed": 1680,
+          "bpm": 162,
+          "segment": 1
+        },
+        {
+          "elapsed": 1690,
+          "bpm": 162,
+          "segment": 1
+        },
+        {
+          "elapsed": 1700,
+          "bpm": 163,
+          "segment": 1
+        },
+        {
+          "elapsed": 1710,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1720,
+          "bpm": 165,
+          "segment": 1
+        },
+        {
+          "elapsed": 1730,
+          "bpm": 166,
+          "segment": 1
+        },
+        {
+          "elapsed": 1740,
+          "bpm": 167,
+          "segment": 1
+        },
+        {
+          "elapsed": 1750,
+          "bpm": 168,
+          "segment": 1
+        },
+        {
+          "elapsed": 1760,
+          "bpm": 169,
+          "segment": 1
+        },
+        {
+          "elapsed": 1770,
+          "bpm": 170,
+          "segment": 1
+        },
+        {
+          "elapsed": 1780,
+          "bpm": 170,
+          "segment": 1
+        },
+        {
+          "elapsed": 1790,
+          "bpm": 171,
+          "segment": 1
+        },
+        {
+          "elapsed": 1800,
+          "bpm": 164,
+          "segment": 1
+        },
+        {
+          "elapsed": 1810,
+          "bpm": 158,
+          "segment": 1
+        },
+        {
+          "elapsed": 1820,
+          "bpm": 152,
+          "segment": 1
+        },
+        {
+          "elapsed": 1830,
+          "bpm": 147,
+          "segment": 1
+        },
+        {
+          "elapsed": 1840,
+          "bpm": 142,
+          "segment": 1
+        },
+        {
+          "elapsed": 1850,
+          "bpm": 137,
+          "segment": 1
+        },
+        {
+          "elapsed": 1860,
+          "bpm": 134,
+          "segment": 1
+        },
+        {
+          "elapsed": 1870,
+          "bpm": 130,
+          "segment": 1
+        },
+        {
+          "elapsed": 1880,
+          "bpm": 127,
+          "segment": 1
+        },
+        {
+          "elapsed": 1890,
+          "bpm": 125,
+          "segment": 1
+        },
+        {
+          "elapsed": 1900,
+          "bpm": 122,
+          "segment": 1
+        },
+        {
+          "elapsed": 1910,
+          "bpm": 121,
+          "segment": 1
+        },
+        {
+          "elapsed": 1920,
+          "bpm": 120,
+          "segment": 1
+        },
+        {
+          "elapsed": 1930,
+          "bpm": 119,
+          "segment": 1
+        },
+        {
+          "elapsed": 1940,
+          "bpm": 118,
+          "segment": 1
+        },
+        {
+          "elapsed": 1950,
+          "bpm": 118,
+          "segment": 1
+        },
+        {
+          "elapsed": 1960,
+          "bpm": 117,
+          "segment": 1
+        },
+        {
+          "elapsed": 1970,
+          "bpm": 117,
+          "segment": 1
+        },
+        {
+          "elapsed": 1980,
+          "bpm": 117,
+          "segment": 1
+        },
+        {
+          "elapsed": 1990,
+          "bpm": 117,
+          "segment": 1
+        },
+        {
+          "elapsed": 2000,
+          "bpm": 116,
+          "segment": 1
+        },
+        {
+          "elapsed": 2010,
+          "bpm": 115,
+          "segment": 1
+        },
+        {
+          "elapsed": 2020,
+          "bpm": 115,
+          "segment": 1
+        },
+        {
+          "elapsed": 2030,
+          "bpm": 114,
+          "segment": 1
+        },
+        {
+          "elapsed": 2040,
+          "bpm": 113,
+          "segment": 1
+        },
+        {
+          "elapsed": 2050,
+          "bpm": 112,
+          "segment": 1
+        },
+        {
+          "elapsed": 2060,
+          "bpm": 111,
+          "segment": 1
+        },
+        {
+          "elapsed": 2070,
+          "bpm": 110,
+          "segment": 1
+        },
+        {
+          "elapsed": 2080,
+          "bpm": 110,
+          "segment": 1
+        },
+        {
+          "elapsed": 2090,
+          "bpm": 109,
+          "segment": 1
+        },
+        {
+          "elapsed": 2100,
+          "bpm": 109,
+          "segment": 1
+        }
+      ],
+      "gaps": [
+        {
+          "start": 1020,
+          "end": 1110,
+          "reason": "Simulated sensor disconnection"
+        }
+      ],
+      "notes": "Illustrative sample session. Equipment settings are user-entered."
+    },
+    {
+      "id": "steady-bike",
+      "name": "Steady ride",
+      "templateID": "steady",
+      "startedAt": "2026-10-02T18:00:00Z",
+      "status": "completed",
+      "isSimulation": true,
+      "equipment": {
+        "id": "bike",
+        "gym": "Neighborhood gym",
+        "name": "Indoor bike",
+        "activity": "bike",
+        "speedUnit": null
+      },
+      "activeSeconds": 1560,
+      "intervals": [
+        {
+          "id": "steady-0",
+          "role": "warmup",
+          "repetition": null,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": null,
+            "incline": null,
+            "resistance": 3,
+            "cadence": 65
+          }
+        },
+        {
+          "id": "steady-1",
+          "role": "work",
+          "repetition": 1,
+          "plannedSeconds": 1200,
+          "actualSeconds": 1200,
+          "settings": {
+            "speed": null,
+            "incline": null,
+            "resistance": 6,
+            "cadence": 85
+          }
+        },
+        {
+          "id": "steady-2",
+          "role": "cooldown",
+          "repetition": null,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": null,
+            "incline": null,
+            "resistance": 3,
+            "cadence": 65
+          }
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 0,
+          "bpm": 107,
+          "segment": 0
+        },
+        {
+          "elapsed": 10,
+          "bpm": 109,
+          "segment": 0
+        },
+        {
+          "elapsed": 20,
+          "bpm": 110,
+          "segment": 0
+        },
+        {
+          "elapsed": 30,
+          "bpm": 112,
+          "segment": 0
+        },
+        {
+          "elapsed": 40,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 50,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 60,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 70,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 80,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 90,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 100,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 110,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 120,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 130,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 140,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 150,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 160,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 170,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 180,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 190,
+          "bpm": 122,
+          "segment": 0
+        },
+        {
+          "elapsed": 200,
+          "bpm": 125,
+          "segment": 0
+        },
+        {
+          "elapsed": 210,
+          "bpm": 128,
+          "segment": 0
+        },
+        {
+          "elapsed": 220,
+          "bpm": 131,
+          "segment": 0
+        },
+        {
+          "elapsed": 230,
+          "bpm": 133,
+          "segment": 0
+        },
+        {
+          "elapsed": 240,
+          "bpm": 134,
+          "segment": 0
+        },
+        {
+          "elapsed": 250,
+          "bpm": 135,
+          "segment": 0
+        },
+        {
+          "elapsed": 260,
+          "bpm": 136,
+          "segment": 0
+        },
+        {
+          "elapsed": 270,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 280,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 290,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 300,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 310,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 320,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 330,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 340,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 350,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 360,
+          "bpm": 139,
+          "segment": 0
+        },
+        {
+          "elapsed": 370,
+          "bpm": 140,
+          "segment": 0
+        },
+        {
+          "elapsed": 380,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 390,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 400,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 410,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 420,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 430,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 440,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 450,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 460,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 470,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 480,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 490,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 500,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 510,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 520,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 530,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 540,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 550,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 560,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 570,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 580,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 590,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 600,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 610,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 620,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 630,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 640,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 650,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 660,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 670,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 680,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 690,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 700,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 710,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 720,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 730,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 740,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 750,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 760,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 770,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 780,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 790,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 800,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 810,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 820,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 830,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 840,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 850,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 860,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 870,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 880,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 890,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 900,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 910,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 920,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 930,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 940,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 950,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 960,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 970,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 980,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 990,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1000,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1010,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1020,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1030,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1040,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1050,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1060,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1070,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1080,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1090,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1100,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1110,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1120,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1130,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1140,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1150,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1160,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1170,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1180,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1190,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1200,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1210,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1220,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1230,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 1240,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1250,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 1260,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1270,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1280,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1290,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1300,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1310,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1320,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1330,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 1340,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1350,
+          "bpm": 142,
+          "segment": 0
+        },
+        {
+          "elapsed": 1360,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1370,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 1380,
+          "bpm": 140,
+          "segment": 0
+        },
+        {
+          "elapsed": 1390,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 1400,
+          "bpm": 134,
+          "segment": 0
+        },
+        {
+          "elapsed": 1410,
+          "bpm": 132,
+          "segment": 0
+        },
+        {
+          "elapsed": 1420,
+          "bpm": 129,
+          "segment": 0
+        },
+        {
+          "elapsed": 1430,
+          "bpm": 127,
+          "segment": 0
+        },
+        {
+          "elapsed": 1440,
+          "bpm": 125,
+          "segment": 0
+        },
+        {
+          "elapsed": 1450,
+          "bpm": 123,
+          "segment": 0
+        },
+        {
+          "elapsed": 1460,
+          "bpm": 120,
+          "segment": 0
+        },
+        {
+          "elapsed": 1470,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 1480,
+          "bpm": 117,
+          "segment": 0
+        },
+        {
+          "elapsed": 1490,
+          "bpm": 116,
+          "segment": 0
+        },
+        {
+          "elapsed": 1500,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 1510,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 1520,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 1530,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 1540,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 1550,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 1560,
+          "bpm": 113,
+          "segment": 0
+        }
+      ],
+      "gaps": [],
+      "notes": "Illustrative sample session. Equipment settings are user-entered."
+    },
+    {
+      "id": "partial",
+      "name": "Norwegian 4\u00d74",
+      "templateID": "norwegian",
+      "startedAt": "2026-09-30T17:30:00Z",
+      "status": "partial",
+      "isSimulation": true,
+      "equipment": {
+        "id": "treadmill",
+        "gym": "Neighborhood gym",
+        "name": "Treadmill",
+        "activity": "treadmill",
+        "speedUnit": "mph"
+      },
+      "activeSeconds": 840,
+      "intervals": [
+        {
+          "id": "norwegian-0",
+          "role": "warmup",
+          "repetition": null,
+          "plannedSeconds": 300,
+          "actualSeconds": 300,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-1",
+          "role": "work",
+          "repetition": 1,
+          "plannedSeconds": 240,
+          "actualSeconds": 240,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-2",
+          "role": "recovery",
+          "repetition": 1,
+          "plannedSeconds": 180,
+          "actualSeconds": 180,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-3",
+          "role": "work",
+          "repetition": 2,
+          "plannedSeconds": 240,
+          "actualSeconds": 120,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-4",
+          "role": "recovery",
+          "repetition": 2,
+          "plannedSeconds": 180,
+          "actualSeconds": 0,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-5",
+          "role": "work",
+          "repetition": 3,
+          "plannedSeconds": 240,
+          "actualSeconds": 0,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-6",
+          "role": "recovery",
+          "repetition": 3,
+          "plannedSeconds": 180,
+          "actualSeconds": 0,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-7",
+          "role": "work",
+          "repetition": 4,
+          "plannedSeconds": 240,
+          "actualSeconds": 0,
+          "settings": {
+            "speed": 6.5,
+            "incline": 2,
+            "resistance": null,
+            "cadence": null
+          }
+        },
+        {
+          "id": "norwegian-8",
+          "role": "cooldown",
+          "repetition": null,
+          "plannedSeconds": 300,
+          "actualSeconds": 0,
+          "settings": {
+            "speed": 3.2,
+            "incline": 1,
+            "resistance": null,
+            "cadence": null
+          }
+        }
+      ],
+      "samples": [
+        {
+          "elapsed": 0,
+          "bpm": 107,
+          "segment": 0
+        },
+        {
+          "elapsed": 10,
+          "bpm": 109,
+          "segment": 0
+        },
+        {
+          "elapsed": 20,
+          "bpm": 110,
+          "segment": 0
+        },
+        {
+          "elapsed": 30,
+          "bpm": 112,
+          "segment": 0
+        },
+        {
+          "elapsed": 40,
+          "bpm": 113,
+          "segment": 0
+        },
+        {
+          "elapsed": 50,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 60,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 70,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 80,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 90,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 100,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 110,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 120,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 130,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 140,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 150,
+          "bpm": 114,
+          "segment": 0
+        },
+        {
+          "elapsed": 160,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 170,
+          "bpm": 115,
+          "segment": 0
+        },
+        {
+          "elapsed": 180,
+          "bpm": 116,
+          "segment": 0
+        },
+        {
+          "elapsed": 190,
+          "bpm": 117,
+          "segment": 0
+        },
+        {
+          "elapsed": 200,
+          "bpm": 117,
+          "segment": 0
+        },
+        {
+          "elapsed": 210,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 220,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 230,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 240,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 250,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 260,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 270,
+          "bpm": 119,
+          "segment": 0
+        },
+        {
+          "elapsed": 280,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 290,
+          "bpm": 118,
+          "segment": 0
+        },
+        {
+          "elapsed": 300,
+          "bpm": 124,
+          "segment": 0
+        },
+        {
+          "elapsed": 310,
+          "bpm": 129,
+          "segment": 0
+        },
+        {
+          "elapsed": 320,
+          "bpm": 133,
+          "segment": 0
+        },
+        {
+          "elapsed": 330,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 340,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 350,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 360,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 370,
+          "bpm": 151,
+          "segment": 0
+        },
+        {
+          "elapsed": 380,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 390,
+          "bpm": 156,
+          "segment": 0
+        },
+        {
+          "elapsed": 400,
+          "bpm": 159,
+          "segment": 0
+        },
+        {
+          "elapsed": 410,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 420,
+          "bpm": 163,
+          "segment": 0
+        },
+        {
+          "elapsed": 430,
+          "bpm": 164,
+          "segment": 0
+        },
+        {
+          "elapsed": 440,
+          "bpm": 165,
+          "segment": 0
+        },
+        {
+          "elapsed": 450,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 460,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 470,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 480,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 490,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 500,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 510,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 520,
+          "bpm": 166,
+          "segment": 0
+        },
+        {
+          "elapsed": 530,
+          "bpm": 167,
+          "segment": 0
+        },
+        {
+          "elapsed": 540,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 550,
+          "bpm": 157,
+          "segment": 0
+        },
+        {
+          "elapsed": 560,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 570,
+          "bpm": 151,
+          "segment": 0
+        },
+        {
+          "elapsed": 580,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 590,
+          "bpm": 146,
+          "segment": 0
+        },
+        {
+          "elapsed": 600,
+          "bpm": 144,
+          "segment": 0
+        },
+        {
+          "elapsed": 610,
+          "bpm": 143,
+          "segment": 0
+        },
+        {
+          "elapsed": 620,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 630,
+          "bpm": 140,
+          "segment": 0
+        },
+        {
+          "elapsed": 640,
+          "bpm": 138,
+          "segment": 0
+        },
+        {
+          "elapsed": 650,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 660,
+          "bpm": 135,
+          "segment": 0
+        },
+        {
+          "elapsed": 670,
+          "bpm": 134,
+          "segment": 0
+        },
+        {
+          "elapsed": 680,
+          "bpm": 132,
+          "segment": 0
+        },
+        {
+          "elapsed": 690,
+          "bpm": 131,
+          "segment": 0
+        },
+        {
+          "elapsed": 700,
+          "bpm": 130,
+          "segment": 0
+        },
+        {
+          "elapsed": 710,
+          "bpm": 129,
+          "segment": 0
+        },
+        {
+          "elapsed": 720,
+          "bpm": 133,
+          "segment": 0
+        },
+        {
+          "elapsed": 730,
+          "bpm": 137,
+          "segment": 0
+        },
+        {
+          "elapsed": 740,
+          "bpm": 141,
+          "segment": 0
+        },
+        {
+          "elapsed": 750,
+          "bpm": 145,
+          "segment": 0
+        },
+        {
+          "elapsed": 760,
+          "bpm": 148,
+          "segment": 0
+        },
+        {
+          "elapsed": 770,
+          "bpm": 152,
+          "segment": 0
+        },
+        {
+          "elapsed": 780,
+          "bpm": 154,
+          "segment": 0
+        },
+        {
+          "elapsed": 790,
+          "bpm": 157,
+          "segment": 0
+        },
+        {
+          "elapsed": 800,
+          "bpm": 159,
+          "segment": 0
+        },
+        {
+          "elapsed": 810,
+          "bpm": 161,
+          "segment": 0
+        },
+        {
+          "elapsed": 820,
+          "bpm": 163,
+          "segment": 0
+        },
+        {
+          "elapsed": 830,
+          "bpm": 164,
+          "segment": 0
+        },
+        {
+          "elapsed": 840,
+          "bpm": 165,
+          "segment": 0
+        }
+      ],
+      "gaps": [],
+      "notes": "Illustrative sample session. Equipment settings are user-entered."
+    }
+  ],
+  "states": [
+    {
+      "id": "ready",
+      "label": "Ready",
+      "elapsed": 0,
+      "sensor": "connected"
+    },
+    {
+      "id": "work",
+      "label": "Work \u00b7 2 of 4",
+      "elapsed": 780,
+      "sensor": "connected"
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery",
+      "elapsed": 570,
+      "sensor": "connected"
+    },
+    {
+      "id": "paused",
+      "label": "Paused",
+      "elapsed": 780,
+      "sensor": "connected"
+    },
+    {
+      "id": "no-hr",
+      "label": "No HR",
+      "elapsed": 780,
+      "sensor": "none"
+    },
+    {
+      "id": "disconnected",
+      "label": "Disconnected / stale HR",
+      "elapsed": 1050,
+      "sensor": "disconnected"
+    },
+    {
+      "id": "empty",
+      "label": "Empty history",
+      "elapsed": 0,
+      "sensor": "none"
+    },
+    {
+      "id": "completed",
+      "label": "Completed workout",
+      "elapsed": 2100,
+      "sensor": "connected"
+    },
+    {
+      "id": "partial",
+      "label": "Partial workout",
+      "elapsed": 840,
+      "sensor": "connected"
+    }
+  ]
+}
