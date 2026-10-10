@@ -29,7 +29,7 @@ struct TemplateListView: View {
             } header: { Text("Saved templates") } footer: { Text("Choose a timer to see its workout. Your last-used template opens automatically next time.") }
         }
         .scrollContentBackground(.hidden).background(Style.canvas)
-        .navigationTitle("Timers")
+        .navigationTitle("Templates")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New template", systemImage: "plus") {

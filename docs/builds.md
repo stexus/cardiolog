@@ -28,7 +28,7 @@ Local source without a commit is labeled `uncommitted`; modified/untracked sourc
 
 ## GitHub workflows
 
-Milestone 1 is committed locally; the user will add the remote and push. No remote, CI run, or publication has been performed.
+The remote is [stexus/cardiolog](https://github.com/stexus/cardiolog). The [first baseline run passed](https://github.com/stexus/cardiolog/actions/runs/37423241466) and published [dev-1.1](https://github.com/stexus/cardiolog/releases/tag/dev-1.1): version 0.1.0, build 1.1.1, source `90cb95b`. The [iOS 27 run failed](https://github.com/stexus/cardiolog/actions/runs/37423240488) during `scripts/validate-native.sh 27` after the toolchain/runtime check passed; its exact failure still needs diagnosis. The public log-download endpoint requires authentication, so no cause is inferred from exit code 65 alone.
 
 - `ci.yml`: read-only PR checks and reusable validation; browser and feed/publication checks always, native checks only when native/build/shared fixture inputs change. Uses pinned action commits and locked npm/SPM dependencies.
 - `build-ipa.yml`: relevant `main` pushes produce dev builds after validation; manual dispatch chooses dev/release/both; numeric `vMAJOR.MINOR.PATCH` tags produce releases. Browser-only and documentation-only pushes do not build an IPA. Other manually selected branches produce workflow artifacts only.
@@ -46,10 +46,10 @@ An unsigned IPA is not directly installable. After browser review, download it i
 
 ## FlareStore repository feed
 
-After pushing `main`, wait for **Build unsigned IPA** to finish its publication job. It uploads the immutable dev IPA and then creates/updates `source.json` on the dedicated `sideload` branch. Add this URL in **FlareStore → Add Repository**, substituting the GitHub owner and repository name:
+After pushing `main`, wait for **Build unsigned IPA** to finish its publication job. It uploads the immutable dev IPA and then creates/updates `source.json` on the dedicated `sideload` branch. The first publication is live. Add this URL in **FlareStore → Add Repository**:
 
 ```text
-https://raw.githubusercontent.com/OWNER/REPO/sideload/source.json
+https://raw.githubusercontent.com/stexus/cardiolog/sideload/source.json
 ```
 
 The actual URL is printed in the Actions job summary and release notes. No GitHub Pages configuration or separate server is needed. The feed initially lists **CardioLog Dev**. Publishing a numeric version tag such as `v0.1.0` adds the independent **CardioLog** release entry. Manual release builds from `main` remain downloadable workflow artifacts; they do not create a stable source entry. The current app is still a Milestone 1 sample shell.
@@ -58,7 +58,7 @@ The actual URL is printed in the Actions job summary and release notes. No GitHu
 
 The serialized publication job updates the feed only after all release assets upload successfully and the referenced IPA's name/size are confirmed. The GitHub Contents API commits the entire JSON atomically and checks the previous file SHA to avoid overwriting a concurrent change. The `sideload` branch is created from the first published source commit and thereafter receives only feed updates; `main` is not modified. Reserve that branch/file for generated output and allow the workflow token to create/update it if branch rules are configured. A failed feed update can be retried using the existing immutable release metadata without replacing the IPA.
 
-Repository visibility is unchanged. For a private repository, FlareStore must authenticate access to the feed, icons, and IPA assets; support for that has not been established. No credentials are embedded in the feed. The fallback is authenticated GitHub download, then **FlareStore → Import → Library → Sign → Install**. CI publication and FlareStore installation still require an actual remote workflow run and a signed physical-device test.
+Repository visibility is unchanged. The current feed is publicly readable. For a private repository, FlareStore must authenticate access to the feed, icons, and IPA assets; support for that has not been established. No credentials are embedded in the feed. The fallback is authenticated GitHub download, then **FlareStore → Import → Library → Sign → Install**. CI publication has passed; FlareStore installation still requires a signed physical-device test.
 
 Run the local feed/publication checks with:
 

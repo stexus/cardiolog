@@ -10,13 +10,13 @@ final class CardioLogUITests: XCTestCase {
         let start = app.buttons["start-workout"]
         XCTAssertTrue(start.waitForExistence(timeout: 15))
         XCTAssertTrue(start.isHittable)
-        let back = app.navigationBars.buttons["Timers"].firstMatch
+        let back = app.navigationBars.buttons["Templates"].firstMatch
         XCTAssertGreaterThanOrEqual(back.frame.minY, app.staticTexts["sample-banner"].frame.maxY)
         let initialY = start.frame.minY
         app.scrollViews.firstMatch.swipeUp()
         XCTAssertEqual(start.frame.minY, initialY, accuracy: 1)
         XCTAssertTrue(start.isHittable)
-        app.navigationBars.buttons["Timers"].firstMatch.tap()
+        app.navigationBars.buttons["Templates"].firstMatch.tap()
         XCTAssertTrue(app.buttons["template-steady"].waitForExistence(timeout: 5))
         app.buttons["template-steady"].tap()
         XCTAssertTrue(app.navigationBars["Steady ride"].waitForExistence(timeout: 5))
@@ -24,15 +24,24 @@ final class CardioLogUITests: XCTestCase {
         app.launchArguments = []
         app.launch()
         XCTAssertTrue(app.navigationBars["Steady ride"].waitForExistence(timeout: 15))
-        app.tabBars.buttons["Timers"].tap()
+        app.tabBars.buttons["Train"].tap()
         XCTAssertTrue(app.buttons["template-steady"].waitForExistence(timeout: 5))
         let library = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         library.name = "Native timer library"; library.lifetime = .keepAlways; add(library)
         app.buttons["template-norwegian"].tap()
-        app.tabBars.buttons["History"].tap()
-        app.tabBars.buttons["Timers"].tap()
-        XCTAssertTrue(app.buttons["template-norwegian"].waitForExistence(timeout: 5))
-        app.buttons["template-norwegian"].tap()
+        for otherTab in ["Settings", "History"] {
+            app.tabBars.buttons[otherTab].tap()
+            app.tabBars.buttons["Train"].tap()
+            XCTAssertTrue(app.navigationBars["Norwegian 4×4"].waitForExistence(timeout: 5))
+            XCTAssertTrue(start.isHittable)
+            XCTAssertFalse(app.buttons["template-norwegian"].exists)
+            app.tabBars.buttons["Train"].tap()
+            XCTAssertTrue(app.buttons["template-norwegian"].waitForExistence(timeout: 5))
+            // Coming back from another tab opens the selection even if we left the list visible.
+            app.tabBars.buttons[otherTab].tap()
+            app.tabBars.buttons["Train"].tap()
+            XCTAssertTrue(app.navigationBars["Norwegian 4×4"].waitForExistence(timeout: 5))
+        }
         XCTAssertTrue(start.isHittable)
         let setup = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         setup.name = "Native timer setup"; setup.lifetime = .keepAlways; add(setup)
@@ -42,7 +51,7 @@ final class CardioLogUITests: XCTestCase {
         app.scrollViews.firstMatch.swipeUp()
         XCTAssertTrue(start.isHittable)
         XCUIDevice.shared.orientation = .portrait
-        app.tabBars.buttons["Timers"].tap()
+        app.tabBars.buttons["Train"].tap()
         app.buttons["new-template"].tap()
         XCTAssertTrue(app.textFields["Name"].waitForExistence(timeout: 5))
         app.textFields["Name"].tap()

@@ -19,12 +19,12 @@ The current aesthetic is cool blue: icy light surfaces, blue slate dark surfaces
 
 Try:
 
-1. The last-used timer opens on launch. Use the top-left Timers back button or the Timers tab to browse saved templates. Choose one to open its setup; Start stays pinned above the tabs while details scroll.
-2. Edit → adjust work/recovery durations and settings, repetition count, and final recovery. The duration preview updates immediately. Use the template options menu to duplicate, or New from the Timers list to create a template.
+1. The last-used workout opens on launch. Switch to Settings or History, then Train to return to that workout. Tap Train again while it is selected, or the top-left Templates back button, to browse saved templates. Choose one to open its setup; Start stays pinned above the tabs while details scroll.
+2. Edit → adjust work/recovery durations and settings, repetition count, and final recovery. The duration preview updates immediately. Use the template options menu to duplicate, or New from the Templates list to create a template.
 3. Start sample workout → Pause / Resume → Edit Next. The scope preview lists the affected work intervals. Current and earlier settings are frozen.
 4. Add Interval → inspect the increased planned time → Finish → confirm. The actual partial duration is saved in this browser's separate preview history.
 5. History → choose a sample → select an interval on the graph or table → Copy Workout → change fields and inspect the text.
-6. Timers → Steady ride → choose the Home spin bike. Resistance is specific to that equipment profile.
+6. Templates → Steady ride → choose the Home spin bike. Resistance is specific to that equipment profile.
 
 `styles.css` owns palette, spacing, typography, and layout. `app.js` owns preview interactions, `index.html` owns the outer review controls. Refresh after edits; no IPA rebuild is needed. `Fixtures/sessions.json` is authoritative; do not edit the copies in `mockup/fixtures/` or `Sources/CardioLogCore/Resources/`. Run the preparation script after changing fixtures, or `--check` to detect stale copies.
 

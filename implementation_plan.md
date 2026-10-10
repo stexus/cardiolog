@@ -1,6 +1,6 @@
 # CardioLog — Implementation plan
 
-Status: Milestone 1 implemented locally; validation evidence and remaining external gates are tracked in [docs/milestone-1.md](docs/milestone-1.md). GitHub execution awaits the remote, which the user will add.
+Status: Milestone 1 implemented; the first GitHub dev build and FlareStore feed publication passed. Validation evidence and remaining device gates are tracked in [docs/milestone-1.md](docs/milestone-1.md). The separate iOS 27 validation failed and still needs diagnosis.
 
 Last updated: 2026-10-05.
 
@@ -24,7 +24,7 @@ Deliver:
 
 - A phone-sized interactive preview in a desktop browser, with portrait and landscape views. It must also fit a mobile browser viewport.
 - Light/dark appearances, readable typography, large workout controls, and the same labels, units, and navigation as the native shell.
-- Timers list and selected-template setup, template editing, an active workout, History, workout detail, and Settings. Restore the last-used template on launch; return to the list through the back button or Timers tab. Keep Start visible above the tab bar while setup details scroll. Preview the gym/equipment chooser, Health publishing choice, and configurable Copy Workout flow.
+- Train with a Templates list and selected-template setup, template editing, an active workout, History, workout detail, and Settings. Restore the last-used template on launch and when returning from another tab; open the list through the back button or by tapping the already-selected Train tab. Keep Start visible above the tab bar while setup details scroll. Preview the gym/equipment chooser, Health publishing choice, and configurable Copy Workout flow.
 - Simulated interactions for selecting/editing a template, starting, pausing/resuming, changing the next interval's settings and propagation scope, finishing early, viewing a saved session, selecting an interval on a graph, and previewing copied text.
 - Deterministic preview states for work, recovery, paused, no HR, disconnected/stale HR, empty history, a completed workout, and a partial workout. A preview-only state selector outside the app frame can jump directly between states.
 - A visible sample-data indication. BLE, Apple Health, iOS sharing, audio/background behavior, and permissions are simulations here; they are not reported as tested integrations.
@@ -40,7 +40,7 @@ Open `http://127.0.0.1:4173/` locally, or `http://<machine-LAN-IP>:4173/` from t
 
 ### 2.2 Matching native shell
 
-Create the actual Xcode project, shared schemes/configurations, Swift module boundaries, and basic local storage structure. Implement the Timers / History / Settings navigation, saved-template list and remembered selection, workout setup with pinned Start and template-editor scaffolding, active-workout layout, workout detail, and build-information screen in SwiftUI. Use fixture-backed views and injected simulated services until real recording is implemented.
+Create the actual Xcode project, shared schemes/configurations, Swift module boundaries, and basic local storage structure. Implement the Train / History / Settings navigation, saved-template list and remembered selection, workout setup with pinned Start and template-editor scaffolding, active-workout layout, workout detail, and build-information screen in SwiftUI. Use fixture-backed views and injected simulated services until real recording is implemented.
 
 The native shell should reflect the browser's information hierarchy and flow. Complete recording, analytics, and Health integration arrive in later milestones; do not claim those features work merely because their screens exist. Native previews and the simulator should expose the same representative states used in the mockup.
 
@@ -220,15 +220,15 @@ HealthKit signing is an early gate: check both the provisioning capabilities and
 
 ## 8. Handoff and status tracking
 
-Current state: the browser companion, SwiftUI project, shared fixtures, GRDB preview store, tests, unsigned packaging scripts, and GitHub workflows exist. Git is initialized on `main`; no remote was added, as requested by the user. See [Milestone 1 evidence](docs/milestone-1.md) for actual local results. CI and release links must be added after the remote is configured.
+Current state: the browser companion, SwiftUI project, shared fixtures, GRDB preview store, tests, unsigned packaging scripts, and GitHub workflows exist. The user connected `main` to `stexus/cardiolog`; the first dev IPA and repository feed are published. See [Milestone 1 evidence](docs/milestone-1.md) for local checks and actual CI/release links. Physical-device installation and iOS 27 compatibility remain unverified.
 
 Established during Milestone 1:
 
-- Local Git repository on `main`; remote/visibility remain the user’s later setup.
+- Git repository on `main`, connected to `git@github.com:stexus/cardiolog.git` by the user.
 - Proposed `app.cardiolog.dev` / `app.cardiolog` identities in explicit configurations; final provisioning remains unverified.
 - Xcode 26.3, iOS 26.3 simulator, GRDB 7.11.1 lockfiles, and pinned CI action commits. iOS 27 is not installed locally.
 - Fixture schema 1 in `Fixtures/`; self-contained browser/native copies. LAN preview uses `--bind 0.0.0.0` for the user’s headless SSH workflow.
 
 For each milestone, record completed work, reproducible commands, artifact/preview links, validation results, and remaining external/device dependencies. Do not mark an install or integration verified based on a mockup, simulator, or unsigned archive.
 
-Next: review the browser/native screenshots, apply requested visual feedback to both, then connect the remote and record real workflow/artifact links. Device signing and integration tests follow in Milestone 2 after browser review. No backup or home-server work is needed.
+Next: push the reviewed Train navigation fix, install the resulting dev build through the live FlareStore feed, and verify standalone launch, saved templates, and updating without data loss. Diagnose the failed iOS 27 validation before claiming support. Continue with Milestone 2's direct H10 recording, durable real-session storage, and optional Health integration. No backup or home-server work is needed.

@@ -229,13 +229,13 @@ Use SwiftUI navigation, sheets, forms, pickers, system typography, SF Symbols, n
 
 ### 8.1 Navigation and screen hierarchy
 
-The navigation has three tabs: **Timers**, **History**, and **Settings**. Timers contains a saved-template list and a separate setup screen for each template. On launch, open the last-used template directly (the last selected, saved, or started template); the first bundled template is the initial default. The upper-left back button and an explicit tap on the Timers tab, including tapping the already-selected tab, return to the list. Completed-workout details and comparisons belong to History. The active workout is a dedicated presentation that prioritizes session controls. Returning to another screen must not end recording, and an in-progress session must remain easy to reopen.
+The navigation has three tabs: **Train**, **History**, and **Settings**. Train contains a saved-template list titled **Templates** and a separate setup screen for each template. On launch, open the last-used template directly (the last selected, saved, or started template); the first bundled template is the initial default. Switching to Train from another tab opens the selected template: Norwegian 4×4 → Settings → Train returns to Norwegian 4×4. Tapping Train again while it is already selected opens Templates. The upper-left Templates back button also opens that list. Coming back from another tab opens the selected template even if the list was visible before leaving. Completed-workout details and comparisons belong to History. The active workout is a dedicated presentation that prioritizes session controls. Returning to another screen must not end recording, and an in-progress session must remain easy to reopen.
 
 Screen responsibilities:
 
 | Area | Contents |
 | --- | --- |
-| Timers | Saved-template list and create action; selected-template setup with equipment, HR, Health, edit/duplicate and Start |
+| Train | Selected-template setup with equipment, HR, Health, edit/duplicate and Start; Templates list through back or reselecting Train |
 | Active workout | Large phase countdown, phase/repetition, live HR, entered settings, next phase, pause/finish/add controls |
 | History | Completed and partial sessions; filters by template/activity/gym/equipment |
 | Workout detail | Summary, interval table, aligned graphs, overlay, notes, Copy, Export, Health publication status |
@@ -243,7 +243,7 @@ Screen responsibilities:
 
 ### 8.2 Core flows
 
-**Prepare a workout.** Timers presents saved templates with names, activity, and duration, plus a create action. Selecting a template opens a setup summary showing the phase sequence, repetition count, total planned active duration, gym/equipment, and entered work/recovery settings. This screen contains only actions relating to the selected template: edit, duplicate, setup choices, and start. Browse other templates through the parent list instead of an inline Change template action. Preserve saved edits, duplicates, equipment choice, and the selected template across relaunches; canceling an editor must leave the saved template unchanged. HR connection and Health publishing are separate controls with visible current states. Starting without HR is allowed. The user can understand whether the session will publish to Health before starting.
+**Prepare a workout.** Train opens the selected template's setup summary showing the phase sequence, repetition count, total planned active duration, gym/equipment, and entered work/recovery settings. Templates lists saved templates with names, activity, and duration, plus a create action. Selecting one opens its setup. This screen contains only actions relating to the selected template: edit, duplicate, setup choices, and start. Browse other templates through the parent list instead of an inline Change template action. Preserve saved edits, duplicates, equipment choice, and the selected template across relaunches; canceling an editor must leave the saved template unchanged. HR connection and Health publishing are separate controls with visible current states. Starting without HR is allowed. The user can understand whether the session will publish to Health before starting.
 
 Keep a large Start button pinned above the tab bar while the setup details scroll, in portrait and landscape. Starting the familiar template should never require scrolling through its editor or phase list. If a workout is already active, this action returns to that workout instead of replacing it.
 

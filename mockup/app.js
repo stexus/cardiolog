@@ -148,7 +148,7 @@ function selectTemplate(template) {
 function templateList() {
   return (
     heading(
-      "Timers",
+      "Templates",
       `<button class="text-button" data-action="new-template" aria-label="New template">＋ New</button>`,
     ) +
     `<p class="secondary">Your saved workout templates.</p><div class="template-library">${templates
@@ -169,7 +169,7 @@ function train() {
   const t = state.template,
     rows = expand(t);
   return (
-    `<div class="row template-navigation"><button class="text-button" data-action="templates" aria-label="Back to Timers">‹ Timers</button><button class="text-button" data-action="template-options" aria-label="Template options">•••</button></div>` +
+    `<div class="row template-navigation"><button class="text-button" data-action="templates" aria-label="Back to Templates">‹ Templates</button><button class="text-button" data-action="template-options" aria-label="Template options">•••</button></div>` +
     heading(esc(t.name)) +
     `<div class="setup-layout"><div><div class="card hero-card"><div class="row"><span class="pill">${t.activity === "bike" ? "INDOOR BIKE" : "TREADMILL"}</span><button class="text-button" data-action="edit-template">Edit</button></div>
     <div class="planned-time">${time(total(rows))} <small>planned active time</small></div><div class="secondary">${t.repetitions} ${t.repetitions === 1 ? "effort" : "efforts"} · ${time(t.workSeconds)} work${t.recoverySeconds ? ` / ${time(t.recoverySeconds)} recovery` : ""}</div>${sequence(rows)}</div>
@@ -199,14 +199,14 @@ function live() {
     r = s.rows[c.index],
     next = s.rows[c.index + 1],
     e = elapsed();
-  return `<div class="row"><button class="text-button" data-action="minimize">‹ Timer</button><span class="secondary">${esc(s.template.name)}</span><span class="pill">SAMPLE</span></div><div class="live-layout"><div><div class="live-title"><span class="pill">${s.paused ? "PAUSED" : label(r.role).toUpperCase()}${r.repetition ? ` · ${r.repetition} OF ${s.rows.filter((r) => r.role === "work").length}` : ""}</span></div><div class="countdown" id="countdown">${time(c.remaining)}</div><div class="countdown-label">${s.paused ? "Timer paused" : "remaining in this interval"}</div><div class="card hr-card"><div class="heart">♥ <span class="secondary">HEART RATE</span></div><div class="hr-value">${state.sensor === "connected" && !s.paused ? "162" : "—"} <small>bpm</small></div><div class="state-line ${state.sensor !== "connected" ? "warn" : ""}">${s.paused ? "Paused · HR excluded" : state.sensor === "connected" ? "Simulated reading · no sensor data" : sensorText()}</div></div></div><div><div class="settings-grid">${r.settings.speed != null ? `<div class="card"><small>ENTERED SPEED</small><div class="big-value">${r.settings.speed} <small>mph</small></div></div><div class="card"><small>ENTERED INCLINE</small><div class="big-value">${r.settings.incline} <small>%</small></div></div>` : `<div class="card"><small>ENTERED RESISTANCE</small><div class="big-value">${r.settings.resistance} <small>level</small></div></div><div class="card"><small>ENTERED CADENCE</small><div class="big-value">${r.settings.cadence} <small>rpm</small></div></div>`}</div><div class="card next-card row"><div class="stack"><small>UP NEXT</small><strong>${next ? `${label(next.role)} · ${time(next.plannedSeconds)}` : "Workout complete"}</strong></div><button class="text-button" data-action="edit-next">Edit Next</button></div><div class="row secondary"><span id="elapsed">${time(e)} active</span><span>${time(total(s.rows))} planned</span></div><div class="progress"><span id="progress" style="width:${(e / total(s.rows)) * 100}%"></span></div><div class="live-actions"><button class="primary" data-action="pause">${s.paused ? "▶ Resume" : "Ⅱ Pause"}</button><div class="row"><button data-action="add">＋ Add Interval</button><button class="danger" data-action="finish">Finish</button></div></div></div></div>`;
+  return `<div class="row"><button class="text-button" data-action="minimize">‹ Train</button><span class="secondary">${esc(s.template.name)}</span><span class="pill">SAMPLE</span></div><div class="live-layout"><div><div class="live-title"><span class="pill">${s.paused ? "PAUSED" : label(r.role).toUpperCase()}${r.repetition ? ` · ${r.repetition} OF ${s.rows.filter((r) => r.role === "work").length}` : ""}</span></div><div class="countdown" id="countdown">${time(c.remaining)}</div><div class="countdown-label">${s.paused ? "Timer paused" : "remaining in this interval"}</div><div class="card hr-card"><div class="heart">♥ <span class="secondary">HEART RATE</span></div><div class="hr-value">${state.sensor === "connected" && !s.paused ? "162" : "—"} <small>bpm</small></div><div class="state-line ${state.sensor !== "connected" ? "warn" : ""}">${s.paused ? "Paused · HR excluded" : state.sensor === "connected" ? "Simulated reading · no sensor data" : sensorText()}</div></div></div><div><div class="settings-grid">${r.settings.speed != null ? `<div class="card"><small>ENTERED SPEED</small><div class="big-value">${r.settings.speed} <small>mph</small></div></div><div class="card"><small>ENTERED INCLINE</small><div class="big-value">${r.settings.incline} <small>%</small></div></div>` : `<div class="card"><small>ENTERED RESISTANCE</small><div class="big-value">${r.settings.resistance} <small>level</small></div></div><div class="card"><small>ENTERED CADENCE</small><div class="big-value">${r.settings.cadence} <small>rpm</small></div></div>`}</div><div class="card next-card row"><div class="stack"><small>UP NEXT</small><strong>${next ? `${label(next.role)} · ${time(next.plannedSeconds)}` : "Workout complete"}</strong></div><button class="text-button" data-action="edit-next">Edit Next</button></div><div class="row secondary"><span id="elapsed">${time(e)} active</span><span>${time(total(s.rows))} planned</span></div><div class="progress"><span id="progress" style="width:${(e / total(s.rows)) * 100}%"></span></div><div class="live-actions"><button class="primary" data-action="pause">${s.paused ? "▶ Resume" : "Ⅱ Pause"}</button><div class="row"><button data-action="add">＋ Add Interval</button><button class="danger" data-action="finish">Finish</button></div></div></div></div>`;
 }
 function historyView() {
   return (
     heading("History", `<span class="pill">SAMPLES</span>`) +
     `<p class="secondary">Your intervals, with the whole picture.</p>` +
     (state.empty || !history.length
-      ? `<div class="empty"><span class="symbol">◷</span><h2>No workouts yet</h2><p class="secondary">Start a sample workout to explore<br>your timeline and interval details.</p><button data-action="go-train">Go to Timers</button></div>`
+      ? `<div class="empty"><span class="symbol">◷</span><h2>No workouts yet</h2><p class="secondary">Start a sample workout to explore<br>your timeline and interval details.</p><button data-action="go-train">Go to Train</button></div>`
       : history
           .map(
             (w) =>
@@ -307,7 +307,7 @@ function render() {
     : ["train", "history", "settings"]
         .map(
           (tab, i) =>
-            `<button data-action="tab" data-tab="${tab}" class="${state.tab === tab ? "active" : ""}" ${state.tab === tab ? 'aria-current="page"' : ""}><span aria-hidden="true">${["◴", "▤", "⚙"][i]}</span>${tab === "train" ? "Timers" : tab[0].toUpperCase() + tab.slice(1)}</button>`,
+            `<button data-action="tab" data-tab="${tab}" class="${state.tab === tab ? "active" : ""}" ${state.tab === tab ? 'aria-current="page"' : ""}><span aria-hidden="true">${["◴", "▤", "⚙"][i]}</span>${tab[0].toUpperCase() + tab.slice(1)}</button>`,
         )
         .join("");
   const setup = state.tab === "train" && !state.showTemplates && !state.detail;
@@ -670,8 +670,9 @@ document.addEventListener("click", (e) => {
   const a = button.dataset.action;
   switch (a) {
     case "tab":
+      if (button.dataset.tab === "train")
+        state.showTemplates = state.tab === "train";
       state.tab = button.dataset.tab;
-      if (state.tab === "train") state.showTemplates = true;
       state.detail = null;
       render();
       break;
@@ -830,7 +831,7 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "go-train":
-      state.showTemplates = true;
+      state.showTemplates = false;
       state.tab = "train";
       state.detail = null;
       render();

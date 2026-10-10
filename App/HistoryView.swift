@@ -7,7 +7,7 @@ struct HistoryView: View {
     var body: some View {
         Group {
             if model.emptyHistory || model.history.isEmpty {
-                ContentUnavailableView { Label("No workouts yet", systemImage: "clock") } description: { Text("Start a sample workout to explore your timeline and interval details.") } actions: { Button("Go to Timers") { model.showTimers() } }
+                ContentUnavailableView { Label("No workouts yet", systemImage: "clock") } description: { Text("Start a sample workout to explore your timeline and interval details.") } actions: { Button("Go to Train") { model.showTrain() } }
             } else {
                 List {
                     Section { Text("Sample sessions · separate preview history").font(.caption).foregroundStyle(.secondary) }

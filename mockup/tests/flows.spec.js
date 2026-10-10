@@ -96,7 +96,7 @@ test("all sample states, graph selection, copy configuration and layout modes", 
 test("bike equipment, added repetition and no future work", async ({
   page,
 }) => {
-  await page.getByRole("button", { name: "Back to Timers" }).click();
+  await page.getByRole("button", { name: "Back to Templates" }).click();
   await page.getByRole("button", { name: "Steady ride" }).click();
   await page.getByRole("button", { name: /Neighborhood gym/ }).click();
   await page.getByRole("button", { name: /Spin bike/ }).click();
@@ -129,9 +129,9 @@ test("timer library, remembered edits and pinned Start across layouts", async ({
     page.getByRole("button", { name: "Change template" }),
   ).toHaveCount(0);
   await expectPinned();
-  await page.getByRole("button", { name: "Back to Timers" }).click();
+  await page.getByRole("button", { name: "Back to Templates" }).click();
   await expect(
-    page.getByRole("heading", { name: "Timers", exact: true }),
+    page.getByRole("heading", { name: "Templates", exact: true }),
   ).toBeVisible();
   await expect(start).toHaveCount(0);
   await page.getByRole("button", { name: /Steady ride/ }).click();
@@ -142,17 +142,29 @@ test("timer library, remembered edits and pinned Start across layouts", async ({
   await expect(
     page.getByRole("heading", { name: "My steady ride", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Timers", exact: true }).click();
+  await page.getByRole("button", { name: "Train", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Timers", exact: true }),
+    page.getByRole("heading", { name: "Templates", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: /My steady ride/ }).click();
-  await page.getByRole("button", { name: "History", exact: true }).click();
-  await page.getByRole("button", { name: "Timers", exact: true }).click();
-  await expect(
-    page.getByRole("heading", { name: "Timers", exact: true }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: /My steady ride/ }).click();
+  for (const otherTab of ["Settings", "History"]) {
+    await page.getByRole("button", { name: otherTab, exact: true }).click();
+    await page.getByRole("button", { name: "Train", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "My steady ride", exact: true }),
+    ).toBeVisible();
+    await expect(start).toBeVisible();
+    await expect(page.locator(".library-row")).toHaveCount(0);
+    await page.getByRole("button", { name: "Train", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Templates", exact: true }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: otherTab, exact: true }).click();
+    await page.getByRole("button", { name: "Train", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "My steady ride", exact: true }),
+    ).toBeVisible();
+  }
   await page.locator("#orientation").selectOption("landscape");
   await expectPinned();
   await page.locator("#orientation").selectOption("portrait");
@@ -162,7 +174,7 @@ test("timer library, remembered edits and pinned Start across layouts", async ({
   await expectPinned();
   await page.setViewportSize({ width: 390, height: 700 });
   await expectPinned();
-  await page.getByRole("button", { name: "Back to Timers" }).click();
+  await page.getByRole("button", { name: "Back to Templates" }).click();
   await page.getByRole("button", { name: "New template", exact: true }).click();
   await page.getByLabel("Name", { exact: true }).fill("Canceled draft");
   await page.getByRole("button", { name: "Close", exact: true }).click();
@@ -181,6 +193,6 @@ test("timer library, remembered edits and pinned Start across layouts", async ({
   await expect(
     page.getByRole("heading", { name: "My steady ride copy", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Back to Timers" }).click();
+  await page.getByRole("button", { name: "Back to Templates" }).click();
   await expect(page.locator(".library-row")).toHaveCount(3);
 });

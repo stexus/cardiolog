@@ -25,7 +25,7 @@ struct LiveView: View {
             }.background(Style.canvas)
             .safeAreaInset(edge: .top, spacing: 0) { SampleBanner() }
             .navigationTitle(model.session?.template.name ?? "Sample workout").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .topBarLeading) { Button("Timer", systemImage: "chevron.down") { model.showLive = false } } }
+            .toolbar { ToolbarItem(placement: .topBarLeading) { Button("Train", systemImage: "chevron.down") { model.showLive = false } } }
             .confirmationDialog("Finish this workout?", isPresented: $confirmFinish, titleVisibility: .visible) { Button("Finish & save sample") { Task { await model.finish() } }.accessibilityIdentifier("confirm-finish") } message: { Text("Your partial sample session will be saved with its actual active duration.") }
             .sheet(isPresented: $editNext) { if let session = model.session { NextSettingsView(model: model, session: session) } }
             .alert("Sample workout", isPresented: Binding(get: { notice != nil }, set: { if !$0 { notice = nil } })) { Button("OK") { notice = nil } } message: { Text(notice ?? "") }

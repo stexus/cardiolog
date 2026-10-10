@@ -71,7 +71,11 @@ import CardioLogPersistence
         template.equipmentID = value.id
         saveTemplate(template)
     }
-    func showTimers() { tab = 0; timerPath = [] }
+    func showTrain() { tab = 0; timerPath = [template.id] }
+    func selectTab(_ value: Int) {
+        if value == 0 { timerPath = tab == 0 ? [] : [template.id] }
+        tab = value
+    }
     func start(elapsed: Double = 0, paused: Bool = false, remember: Bool = true) {
         guard session == nil else { showLive = true; return }
         if remember { saveTemplate(template) }
@@ -139,10 +143,8 @@ struct RootView: View {
     var body: some View {
         VStack(spacing: 0) {
             SampleBanner()
-            TabView(selection: Binding(get: { model.tab }, set: { value in
-                if value == 0 { model.showTimers() } else { model.tab = value }
-            })) {
-                Tab("Timers", systemImage: "timer", value: 0) {
+            TabView(selection: Binding(get: { model.tab }, set: { model.selectTab($0) })) {
+                Tab("Train", systemImage: "timer", value: 0) {
                     NavigationStack(path: $model.timerPath) {
                         TemplateListView(model: model)
                             .navigationDestination(for: String.self) { _ in TrainView(model: model) }

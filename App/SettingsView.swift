@@ -40,7 +40,7 @@ struct BuildInfoView: View {
     }
 }
 
-#Preview("Timers") { RootView(model: AppModel(fixtures: try! FixtureLibrary.load())) }
+#Preview("Train") { RootView(model: AppModel(fixtures: try! FixtureLibrary.load())) }
 #Preview("Work") {
     let model = AppModel(fixtures: try! FixtureLibrary.load())
     model.start(elapsed: 780, paused: true)
