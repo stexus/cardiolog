@@ -57,18 +57,25 @@ Browser/native portrait comparisons use the same paused 4×4 (13:00 active, 3:00
 
 ## Remote validation
 
-Verified 2026-10-09 against the public GitHub API and live feed:
+Verified against the public GitHub API and live feed, with an update on 2026-10-12:
 
 - [Build unsigned IPA · run 37423241466](https://github.com/stexus/cardiolog/actions/runs/37423241466): **passed** at source `90cb95b`, including baseline validation and dev publication. [Immutable dev-1.1 release](https://github.com/stexus/cardiolog/releases/tag/dev-1.1): version 0.1.0, build 1.1.1.
 - [FlareStore feed](https://raw.githubusercontent.com/stexus/cardiolog/sideload/source.json): publicly readable and lists CardioLog Dev. A stable release entry has not yet been published. Feed availability does not establish successful signing or installation.
 - [iOS 27 compatibility · run 37423240488](https://github.com/stexus/cardiolog/actions/runs/37423240488): **failed** in `scripts/validate-native.sh 27` with exit code 65. The toolchain/runtime check passed. Public log download returned HTTP 403; the exact test/build failure has not been diagnosed. iOS 27 remains unverified.
 
+October 12 follow-up at source `a56f465`:
+
+- [iOS 27 compatibility · run 38295697782](https://github.com/stexus/cardiolog/actions/runs/38295697782): **passed**, superseding the earlier unverified simulator status.
+- [Build unsigned IPA · run 38295697892](https://github.com/stexus/cardiolog/actions/runs/38295697892): **failed** in browser validation; iOS 26 native checks and feed tests passed, but build/publication were skipped. The user-supplied log identified a null Finish-button bounding box during live-view rendering. The fix uses Playwright's retrying full-viewport assertion, preserving the layout requirement, and enables GitHub failure annotations plus retained traces/screenshots.
+- Local fix validation: **4 browser tests passed** with the pinned Playwright Chromium, plus **30 repeated passes** of the affected layout test. `.tools/actionlint` passed. Evidence: `artifacts/ci-browser-fix.log`, `artifacts/ci-layout-race-after.log`. Remote validation/publication of this fix is pending.
+- The feed remains at version 0.1.0, build 1.1.1; a failed validation intentionally leaves the last published IPA available.
+
 ## Remaining external and later-milestone work
 
 - User visual review and any requested changes to both representations.
-- Push the reviewed Train navigation changes to build and publish an updated dev IPA.
+- Push the browser-test race fix and wait for a successful dev IPA publication; the Train changes are already on remote `main`.
 - Add the live feed in FlareStore and test signing/installation. See [repository feed](builds.md#flarestore-repository-feed).
-- Diagnose and rerun the failed iOS 27 lane. Runtime compatibility has not been established.
+- Keep iOS 26/27 simulator validation passing; physical sensor/Health/background acceptance remains separate.
 - Confirm proposed bundle IDs and effective entitlements with the user's FlareStore certificate, sign/install both channels, verify standalone launch, updates, and separate data.
 - Implement and physically test H10, Health publishing/import, background/locked-phone recording and cues, headphones/silent/Focus behavior, Apple-generated metrics, Bevel and ring credit in the later milestones.
 - Replace the common work/recovery editor scaffold and foreground preview session with the generic production builder/recording engine in Milestone 3; complete production analytics/export schema in Milestone 4. Simulated session playback is not interruption-safe real recording.

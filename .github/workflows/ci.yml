@@ -61,7 +61,8 @@ jobs:
       - run: python3 scripts/prepare-fixtures.py --check
       - run: npm ci --prefix mockup
       - run: npx --prefix mockup playwright install --with-deps chromium
-      - run: mkdir -p artifacts && npm test --prefix mockup
+      - name: Run browser tests with failure annotations
+        run: mkdir -p artifacts && npm test --prefix mockup -- --reporter=list,github
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:

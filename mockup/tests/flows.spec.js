@@ -72,13 +72,11 @@ test("all sample states, graph selection, copy configuration and layout modes", 
   await page.locator("#appearance").selectOption("light");
   await page.locator("#preview-state").selectOption("paused");
   await page.locator("#orientation").selectOption("landscape");
-  const finish = await page
-    .getByRole("button", { name: "Finish", exact: true })
-    .boundingBox();
-  const screen = await page.locator("#screen").boundingBox();
-  expect(finish.y + finish.height).toBeLessThanOrEqual(
-    screen.y + screen.height,
-  );
+  // Timer refreshes can replace this button. Re-resolve it while checking that
+  // the whole control is visible, including clipping by the scroll container.
+  await expect(
+    page.getByRole("button", { name: "Finish", exact: true }),
+  ).toBeInViewport({ ratio: 1 });
   await page.locator("#orientation").selectOption("portrait");
   await page.screenshot({
     path: "../artifacts/browser-paused-light-portrait.png",

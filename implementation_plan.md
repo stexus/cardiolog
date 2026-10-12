@@ -1,6 +1,6 @@
 # CardioLog — Implementation plan
 
-Status: Milestone 1 implemented; the first GitHub dev build and FlareStore feed publication passed. Validation evidence and remaining device gates are tracked in [docs/milestone-1.md](docs/milestone-1.md). The separate iOS 27 validation failed and still needs diagnosis.
+Status: Milestone 1 implemented; the first GitHub dev build and FlareStore feed publication passed. Validation evidence and remaining device gates are tracked in [docs/milestone-1.md](docs/milestone-1.md). The latest iOS 26/27 simulator checks passed; the October 12 IPA publication was blocked by a browser-test timing race.
 
 Last updated: 2026-10-05.
 
@@ -220,7 +220,7 @@ HealthKit signing is an early gate: check both the provisioning capabilities and
 
 ## 8. Handoff and status tracking
 
-Current state: the browser companion, SwiftUI project, shared fixtures, GRDB preview store, tests, unsigned packaging scripts, and GitHub workflows exist. The user connected `main` to `stexus/cardiolog`; the first dev IPA and repository feed are published. See [Milestone 1 evidence](docs/milestone-1.md) for local checks and actual CI/release links. Physical-device installation and iOS 27 compatibility remain unverified.
+Current state: the browser companion, SwiftUI project, shared fixtures, GRDB preview store, tests, unsigned packaging scripts, and GitHub workflows exist. The user connected `main` to `stexus/cardiolog`; the first dev IPA and repository feed are published. See [Milestone 1 evidence](docs/milestone-1.md) for local checks and actual CI/release links. iOS 26/27 simulator validation has passed. Physical-device installation remains unverified.
 
 Established during Milestone 1:
 
@@ -231,4 +231,4 @@ Established during Milestone 1:
 
 For each milestone, record completed work, reproducible commands, artifact/preview links, validation results, and remaining external/device dependencies. Do not mark an install or integration verified based on a mockup, simulator, or unsigned archive.
 
-Next: push the reviewed Train navigation fix, install the resulting dev build through the live FlareStore feed, and verify standalone launch, saved templates, and updating without data loss. Diagnose the failed iOS 27 validation before claiming support. Continue with Milestone 2's direct H10 recording, durable real-session storage, and optional Health integration. No backup or home-server work is needed.
+Next: push the browser-test race fix, install the resulting dev build through the live FlareStore feed, and verify standalone launch, saved templates, and updating without data loss. Wait for successful CI publication before expecting a new FlareStore build. Continue with Milestone 2's direct H10 recording, durable real-session storage, and optional Health integration. No backup or home-server work is needed.
