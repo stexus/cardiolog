@@ -670,8 +670,8 @@ document.addEventListener("click", (e) => {
   const a = button.dataset.action;
   switch (a) {
     case "tab":
-      if (button.dataset.tab === "train")
-        state.showTemplates = state.tab === "train";
+      if (button.dataset.tab === "train" && state.tab === "train")
+        state.showTemplates = true;
       state.tab = button.dataset.tab;
       state.detail = null;
       render();

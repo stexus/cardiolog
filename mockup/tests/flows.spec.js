@@ -160,6 +160,15 @@ test("timer library, remembered edits and pinned Start across layouts", async ({
     await page.getByRole("button", { name: otherTab, exact: true }).click();
     await page.getByRole("button", { name: "Train", exact: true }).click();
     await expect(
+      page.getByRole("heading", { name: "Templates", exact: true }),
+    ).toBeVisible();
+    await expect(start).toHaveCount(0);
+    await page.getByRole("button", { name: "Train", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Templates", exact: true }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: /My steady ride/ }).click();
+    await expect(
       page.getByRole("heading", { name: "My steady ride", exact: true }),
     ).toBeVisible();
   }

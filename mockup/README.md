@@ -19,7 +19,7 @@ The current aesthetic is cool blue: icy light surfaces, blue slate dark surfaces
 
 Try:
 
-1. The last-used workout opens on launch. Switch to Settings or History, then Train to return to that workout. Tap Train again while it is selected, or the top-left Templates back button, to browse saved templates. Choose one to open its setup; Start stays pinned above the tabs while details scroll.
+1. The last-used workout opens on launch. Switch to Settings or History, then Train to return to the screen you left: the selected workout or the Templates list. Tap Train again while it is selected, or the top-left Templates back button, to browse saved templates. Choose one to open its setup; Start stays pinned above the tabs while details scroll.
 2. Edit → adjust work/recovery durations and settings, repetition count, and final recovery. The duration preview updates immediately. Use the template options menu to duplicate, or New from the Templates list to create a template.
 3. Start sample workout → Pause / Resume → Edit Next. The scope preview lists the affected work intervals. Current and earlier settings are frozen.
 4. Add Interval → inspect the increased planned time → Finish → confirm. The actual partial duration is saved in this browser's separate preview history.

@@ -1,6 +1,6 @@
 # Milestone 1 · local implementation and evidence
 
-Implemented 2026-10-05 and committed at the user's request. The user subsequently connected the remote; the first GitHub dev build and feed publication passed. Train navigation was refined on 2026-10-09. Physical-device acceptance remains Milestone 2.
+Implemented 2026-10-05 and committed at the user's request. The user subsequently connected the remote; the first GitHub dev build and feed publication passed. Train navigation was refined on 2026-10-09 and corrected on 2026-10-12 to preserve the Templates list across tab switches. Physical-device acceptance remains Milestone 2.
 
 ## Review
 
@@ -11,7 +11,7 @@ Implemented 2026-10-05 and committed at the user's request. The user subsequentl
 
 The browser supports template editing/duplication/new templates, equipment selection, simulated sensor choices, disabled Health publishing for samples, pause/resume, next-only/remaining-work setting changes, extra intervals, partial saves, persistent sample history, interval selection, copy field preferences, and sample JSON download. The native shell follows the same hierarchy using SwiftUI forms, sheets, menus, tabs and Swift Charts. Detailed production behavior is intentionally deferred according to the milestone plan.
 
-The reference-app review refined navigation in both versions: **Train** opens the selected workout when returning from Settings or History, and launch restores the last-used template. Tapping Train while already selected, or the top-left **Templates** back button, opens the saved-template list. A selected template shows its own setup and edit/duplicate actions. **Start stays pinned above the tabs** while its details scroll; an existing session changes this to Return to workout. Saved edits, duplicates, and equipment selection survive reload/relaunch. The editor retains its compact existing options; additional cycle groups, alerts, and styling controls are deferred.
+The reference-app review refined navigation in both versions: **Train** preserves the screen left behind when returning from Settings or History, including the Templates list. A fresh launch restores the last-used template. Tapping Train while already selected, or the top-left **Templates** back button, opens the saved-template list. A selected template shows its own setup and edit/duplicate actions. **Start stays pinned above the tabs** while its details scroll; an existing session changes this to Return to workout. Saved edits, duplicates, and equipment selection survive reload/relaunch. The editor retains its compact existing options; additional cycle groups, alerts, and styling controls are deferred.
 
 The chosen visual direction is **cool blue with native Liquid Glass**. Adaptive blue assets cover light/dark canvas, cards, summary, work, recovery, and warm-up colors. Native navigation and primary actions use system glass; the browser approximates the material with translucent capsules and restrained highlights. Timer data and charts retain quiet surfaces. The review gallery includes light/dark setup and workout comparisons. Browser checks also verified visible Start/tabs at 390×700 and the reduced-transparency fallback (`artifacts/blue-appearance-checks.json`); this is not a full accessibility audit.
 
@@ -48,6 +48,8 @@ GRDB is pinned to 7.11.1 in both resolution files. Preview storage uses `Applica
 
 Package verification inspects Mach-O platform information, not only arm64 architecture. Each output folder includes the IPA, symbols, checksum file, exact Xcode/SDK/build metadata, and expected entitlement definitions. These local validation artifacts were built before the initial commits: their manifests record `uncommitted` and `sourceDirty: true`. Committing the source does not retroactively change those binaries; subsequent builds record the committed SHA.
 
+The October 12 Train navigation correction preserves both the selected workout and the Templates list across Settings/History tab switches. The new browser regression failed before the fix (`artifacts/train-location-before.log`). After the fix, **4 browser tests and 4 native UI tests passed**, including returning to the list, reselecting Train while already on the list, and restoring the selected template on relaunch. Evidence: `artifacts/train-location-browser-tests.log`, `artifacts/train-location-native-tests.log`, and `artifacts/iOS-26-train-location.xcresult`.
+
 Final artifacts:
 
 - `artifacts/dev/CardioLog-Dev-0.1.0-1.0.11-uncommi-unsigned.ipa`
@@ -73,7 +75,7 @@ October 12 follow-up at source `a56f465`:
 ## Remaining external and later-milestone work
 
 - User visual review and any requested changes to both representations.
-- Push the browser-test race fix and wait for a successful dev IPA publication; the Train changes are already on remote `main`.
+- Push the correction that preserves Train's navigation position and wait for a successful dev IPA publication. The preceding browser-test fix was published as [dev-3.1](https://github.com/stexus/cardiolog/releases/tag/dev-3.1), version 0.1.0 / build 1.3.1.
 - Add the live feed in FlareStore and test signing/installation. See [repository feed](builds.md#flarestore-repository-feed).
 - Keep iOS 26/27 simulator validation passing; physical sensor/Health/background acceptance remains separate.
 - Confirm proposed bundle IDs and effective entitlements with the user's FlareStore certificate, sign/install both channels, verify standalone launch, updates, and separate data.

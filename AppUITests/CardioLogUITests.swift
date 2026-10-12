@@ -37,9 +37,14 @@ final class CardioLogUITests: XCTestCase {
             XCTAssertFalse(app.buttons["template-norwegian"].exists)
             app.tabBars.buttons["Train"].tap()
             XCTAssertTrue(app.buttons["template-norwegian"].waitForExistence(timeout: 5))
-            // Coming back from another tab opens the selection even if we left the list visible.
+            // Switching tabs preserves the list as well as a selected workout.
             app.tabBars.buttons[otherTab].tap()
             app.tabBars.buttons["Train"].tap()
+            XCTAssertTrue(app.buttons["template-norwegian"].waitForExistence(timeout: 5))
+            XCTAssertFalse(start.exists)
+            app.tabBars.buttons["Train"].tap()
+            XCTAssertTrue(app.buttons["template-norwegian"].exists)
+            app.buttons["template-norwegian"].tap()
             XCTAssertTrue(app.navigationBars["Norwegian 4×4"].waitForExistence(timeout: 5))
         }
         XCTAssertTrue(start.isHittable)

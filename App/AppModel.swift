@@ -73,7 +73,7 @@ import CardioLogPersistence
     }
     func showTrain() { tab = 0; timerPath = [template.id] }
     func selectTab(_ value: Int) {
-        if value == 0 { timerPath = tab == 0 ? [] : [template.id] }
+        if value == 0 && tab == 0 { timerPath = [] }
         tab = value
     }
     func start(elapsed: Double = 0, paused: Bool = false, remember: Bool = true) {
